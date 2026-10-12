@@ -1,0 +1,122 @@
+/* ==========================================================================
+   TAMBÚ SUSHI — ANIMACIONES (motion.css)
+   --------------------------------------------------------------------------
+   Movimiento discreto y rápido, que nunca frena la compra.
+   Todo se desactiva si el dispositivo pide "reducir movimiento".
+   Para ajustar la velocidad general, cambia --m-rapido / --m-normal.
+   ========================================================================== */
+
+:root {
+  --m-rapido: 140ms;
+  --m-normal: 320ms;
+  --m-curva: cubic-bezier(.2, .8, .2, 1);      /* salida suave */
+  --m-rebote: cubic-bezier(.34, 1.56, .64, 1); /* pequeño rebote */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* ---------- Entrada de cada página ---------- */
+  main#contenido { animation: tb-entrar var(--m-normal) var(--m-curva) both; }
+  @keyframes tb-entrar { from { opacity: 0; transform: translateY(10px); } }
+
+  /* ---------- Salida al cambiar de página ---------- */
+  html.is-leaving main#contenido { opacity: 0; transform: translateY(-6px); transition: opacity 160ms ease, transform 160ms ease; }
+  html.is-leaving .site-footer { opacity: .4; transition: opacity 160ms ease; }
+
+  /* ---------- Respuesta al presionar ---------- */
+  .btn, .chip, .icon-btn, .cat-tile, .choice, .qty button, .theme-switch button,
+  .tabs button, .gallery__thumbs button, .remove-btn, .link-arrow {
+    transition: transform var(--m-rapido) var(--m-curva), background-color var(--m-rapido), border-color var(--m-rapido), color var(--m-rapido), box-shadow var(--m-rapido), opacity var(--m-rapido), gap var(--m-rapido);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active, .chip:active, .theme-switch button:active, .tabs button:active { transform: scale(.96); }
+  .icon-btn:active, .qty button:active { transform: scale(.88); }
+  .cat-tile:active, .choice:active, .gallery__thumbs button:active { transform: scale(.98); }
+  .btn--primary:hover { box-shadow: 0 6px 18px rgba(255, 107, 74, .28); }
+  .btn.is-loading { position: relative; color: transparent !important; }
+  .btn.is-loading::after {
+    content: ""; position: absolute; inset: 0; margin: auto; width: 26px; height: 4px; border-radius: 4px;
+    background: url("../assets/textures/bambu.svg") center / 40px auto, var(--bambu);
+    animation: tb-cargar 900ms var(--m-curva) infinite;
+  }
+  @keyframes tb-cargar { 0% { width: 6px; } 50% { width: 46px; } 100% { width: 6px; } }
+
+  /* Tarjetas: elevación suave */
+  .product-card, .promo-card, .reward, .info-card { transition: transform var(--m-normal) var(--m-curva), box-shadow var(--m-normal), border-color var(--m-rapido); }
+  .product-card:hover, .promo-card:hover { transform: translateY(-3px); }
+  .product-card .photo::before, .promo-card .photo::before { transition: transform 600ms var(--m-curva); }
+  .product-card:hover .photo::before, .promo-card:hover .photo::before { transform: translate(-50%, -50%) rotate(-8deg) scale(1.06); }
+
+  /* ---------- Aparición al hacer scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(16px); }
+  .reveal.is-visible {
+    opacity: 1; transform: none;
+    transition: opacity 520ms var(--m-curva), transform 520ms var(--m-curva);
+    transition-delay: calc(var(--i, 0) * 60ms);
+  }
+
+  /* Cambio de contenido (filtros de la carta) */
+  .is-swapping { animation: tb-cambio 260ms var(--m-curva) both; }
+  @keyframes tb-cambio { from { opacity: 0; transform: translateY(6px); } }
+
+  /* ---------- Menú móvil: enlaces escalonados ---------- */
+  .mobile-menu.is-open .mobile-menu__link,
+  .mobile-menu.is-open .mobile-menu__bottom { animation: tb-lateral 340ms var(--m-curva) both; animation-delay: calc(var(--i, 0) * 35ms + 60ms); }
+  @keyframes tb-lateral { from { opacity: 0; transform: translateX(14px); } }
+
+  /* ---------- Preguntas frecuentes ---------- */
+  .faq details[open] p { animation: tb-abrir 260ms var(--m-curva) both; }
+  @keyframes tb-abrir { from { opacity: 0; transform: translateY(-4px); } }
+
+  /* Pestañas y paneles de la cuenta */
+  [role="tabpanel"]:not([hidden]) { animation: tb-cambio 240ms var(--m-curva) both; }
+  [data-vista]:not([hidden]) { animation: tb-entrar 360ms var(--m-curva) both; }
+
+  /* Barra de puntos: se llena al aparecer */
+  .progress span { animation: tb-llenar 1100ms var(--m-curva) both 150ms; transform-origin: left; }
+  @keyframes tb-llenar { from { transform: scaleX(0); } }
+
+  /* Estado abierto: punto que respira */
+  .status-pill.is-open .status-pill__dot { animation: tb-latido 2.4s ease-in-out infinite; }
+  @keyframes tb-latido { 50% { box-shadow: 0 0 0 6px rgba(122, 154, 96, 0); } }
+
+  /* Contador del carrito */
+  .cart-btn__count.bump { animation: tb-rebote 420ms var(--m-rebote); }
+  @keyframes tb-rebote { 30% { transform: scale(1.45); } 60% { transform: scale(.9); } }
+  .cart-btn.is-receiving { animation: tb-sacudir 420ms var(--m-curva); }
+  @keyframes tb-sacudir { 30% { transform: rotate(-10deg) scale(1.08); } 60% { transform: rotate(6deg); } }
+
+  /* ---------- Aviso con palillos ---------- */
+  .toast { animation: tb-toast 320ms var(--m-rebote) both; }
+  @keyframes tb-toast { from { opacity: 0; transform: translateY(14px) scale(.96); } }
+  .icon--palillos .palillo-a { transform-origin: 3px 21px; animation: tb-pinza-a 700ms var(--m-curva) both; }
+  .icon--palillos .palillo-b { transform-origin: 3px 21px; animation: tb-pinza-b 700ms var(--m-curva) both; }
+  .icon--palillos .pieza { animation: tb-pieza 700ms var(--m-curva) both; }
+  @keyframes tb-pinza-a { 0% { transform: rotate(-14deg); } 55%, 100% { transform: rotate(0); } }
+  @keyframes tb-pinza-b { 0% { transform: rotate(14deg); } 55%, 100% { transform: rotate(0); } }
+  @keyframes tb-pieza { 0%, 40% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); } }
+  .icon--palillos .pieza { transform-box: fill-box; transform-origin: center; }
+}
+
+/* ---------- Barra de bambú al cambiar de página (también con movimiento reducido, sin animar) ---------- */
+.route-bar {
+  position: fixed; top: 0; left: 0; z-index: 200; height: 3px; width: 0;
+  background: url("../assets/textures/bambu.svg") center / 60px auto, var(--bambu);
+  border-radius: 0 3px 3px 0; pointer-events: none;
+}
+html.is-leaving .route-bar { width: 72%; transition: width 900ms cubic-bezier(.1, .7, .2, 1); }
+
+/* Pieza de sushi que vuela al carrito */
+.fly-piece {
+  position: fixed; z-index: 210; width: 22px; height: 22px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, var(--salmon) 0 26%, #FFFDF8 27% 56%, #121212 57% 100%);
+  box-shadow: 0 6px 14px rgba(18, 18, 18, .25);
+}
+
+/* Cambio de tema: fundido suave (navegadores compatibles) */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 320ms; animation-timing-function: ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .fly-piece { display: none; }
+}

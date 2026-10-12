@@ -1,0 +1,2 @@
+Los iconos del sitio son SVG dibujados en código dentro de js/navigation.js (función TAMBU.icono).
+Esta carpeta queda para iconos sueltos (favicon, redes sociales) si se necesitan más adelante.

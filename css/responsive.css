@@ -1,0 +1,112 @@
+/* ==========================================================================
+   TAMBÚ SUSHI — ADAPTACIÓN A PANTALLAS (responsive.css)
+   El diseño base es para teléfono. Aquí se agregan mejoras para pantallas
+   más grandes. Puntos de quiebre: 640px (tablet) · 1024px (computador).
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .container { padding: 0 var(--s-5); }
+  .header-actions .status-pill { display: inline-flex; }
+  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: var(--s-5); }
+  .cat-grid { grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
+  .promo-card { grid-template-columns: 1fr 1fr; }
+  .promo-card .photo { aspect-ratio: auto; height: 100%; min-height: 260px; }
+  .steps { grid-template-columns: repeat(3, 1fr); }
+  .reward-grid { grid-template-columns: repeat(4, 1fr); }
+  .local-grid { grid-template-columns: repeat(2, 1fr); }
+  .site-footer .site-footer__grid { grid-template-columns: repeat(2, 1fr); }
+  .cart-line { grid-template-columns: 96px 1fr; }
+  .values { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  :root { --alto-header: 76px; }
+  .container { padding: 0 var(--s-6); }
+  .main-nav { display: flex; }
+  .menu-toggle { display: none; }
+  .header-cta { display: inline-flex; }
+  .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+  .product-grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .cat-grid { grid-template-columns: repeat(6, 1fr); }
+  .cat-tile { min-height: 168px; }
+  .site-footer .site-footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; }
+  .section { padding: var(--s-9) 0; }
+
+  .hero { padding: var(--s-7) 0 var(--s-9); }
+  .hero__grid { grid-template-columns: 1fr 1.05fr; }
+  .hero__media { padding: 0 0 var(--s-6) var(--s-6); }
+  .promo-list--home { grid-template-columns: 1.3fr 1fr; }
+  .promo-list--home .promo-card:not(:first-child) { grid-template-columns: 1fr; }
+  .promo-list--home .promo-card:first-child { grid-row: span 2; grid-template-columns: 1fr; }
+  .promo-list--home .promo-card:first-child .photo { min-height: 340px; }
+  .promo-list--home .promo-card:not(:first-child) .photo { min-height: 180px; }
+  .loyalty-band { grid-template-columns: 1fr 1fr; padding: var(--s-7); }
+
+  .filter-bar__row { grid-template-columns: minmax(260px, 420px) 230px; justify-content: space-between; }
+  .detail { grid-template-columns: 1.05fr 1fr; gap: var(--s-8); padding-top: var(--s-6); }
+  .detail__info { position: sticky; top: calc(var(--alto-header) + 24px); align-self: start; }
+  .cart-layout { grid-template-columns: 1fr 380px; gap: var(--s-7); }
+  .summary--sticky { position: sticky; top: calc(var(--alto-header) + 24px); }
+  .account-layout { grid-template-columns: 420px 1fr; gap: var(--s-7); }
+  .editorial { grid-template-columns: 1fr 1fr; gap: var(--s-8); }
+  .editorial--reverse > :first-child { order: 2; }
+}
+
+/* En pantallas medianas la cabecera tiene poco espacio:
+   se oculta el estado del local (sigue visible en el menú y en el inicio). */
+@media (min-width: 1024px) and (max-width: 1239px) {
+  .header-actions .status-pill { display: none; }
+}
+
+/* Teléfonos: barra de compra fija en la página de producto */
+@media (max-width: 1023px) {
+  .buy-bar--sticky {
+    position: sticky; bottom: 0; z-index: 15;
+    margin: 0 calc(var(--s-4) * -1); padding: var(--s-3) var(--s-4);
+    background: var(--header-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Teléfonos muy angostos */
+@media (max-width: 380px) {
+  .brand__text span { display: none; }
+  .brand__logo { width: 38px; }
+  .icon-btn { width: 40px; height: 40px; }
+}
+
+/* Teléfonos: el nombre de ciudad bajo el logo ocupa menos (ej. "Punto Fijo") */
+@media (max-width: 479px) {
+  .brand { min-width: 0; gap: 10px; }
+  .brand__text { min-width: 0; }
+  .brand__text span { letter-spacing: .1em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
+/* Cabecera en computadores medianos: menos aire entre enlaces.
+   Con cuenta de administrador hay un enlace más («Pedidos»). */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .site-header__bar { gap: var(--s-3); }
+  .main-nav__link { padding: var(--s-2) 7px; font-size: .86rem; }
+  .main-nav__link.is-active::after { left: 7px; right: 7px; }
+  .es-admin .header-cta { display: none; }
+  .es-admin .brand__text span { display: none; }
+}
+
+/* Botón «Mis pedidos» en la cabecera: un ícono más, se ajustan los espacios */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .site-header .icon-btn { width: 40px; height: 40px; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .header-cta { display: none; }
+}
+@media (max-width: 479px) {
+  .site-header .icon-btn { width: 40px; height: 40px; }
+  .site-header__bar { gap: var(--s-2); }
+}
+@media (max-width: 400px) {
+  .site-header .theme-toggle { display: none; }   /* sigue en el menú (Claro / Oscuro) */
+}

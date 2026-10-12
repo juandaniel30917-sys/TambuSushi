@@ -1,0 +1,17 @@
+/* Estilos SOLO para guia-estilos.html (página interna de revisión) */
+.sg-note { max-width: 40ch; margin: 0; font-size: .9rem; }
+.sg-logo { margin: 0; display: grid; place-items: center; gap: 16px; padding: 40px 24px; border-radius: var(--radio-lg); border: 1px solid var(--linea); }
+.sg-logo img { width: auto; max-height: 220px; }
+.sg-logo figcaption { font-size: .82rem; color: var(--texto-tenue); text-align: center; }
+.sg-logo--light { background: var(--papel); }
+.sg-logo--dark { background: var(--negro); border-color: var(--negro); }
+.sg-logo--dark figcaption { color: #A8A296; }
+.sg-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+.sg-swatch { display: grid; gap: 2px; font-size: .82rem; }
+.sg-swatch span { height: 88px; border-radius: var(--radio); background: var(--c); border: 1px solid var(--linea); margin-bottom: 8px; }
+.sg-swatch code { color: var(--texto-tenue); }
+.sg-swatch em { font-style: normal; color: var(--texto-suave); }
+.sg-type h1, .sg-type h2, .sg-type h3 { margin: 0; }
+.sg-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.sg-texture { min-height: 180px; }
+.sg-texture--wood { border-radius: var(--radio-lg); background: var(--madera) url("../assets/textures/madera-clara.svg") center / 400px auto; }

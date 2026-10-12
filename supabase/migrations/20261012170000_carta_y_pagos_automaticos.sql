@@ -1,0 +1,15 @@
+-- =====================================================================
+-- Carta en la base de datos + pagos automáticos + panel de sucursal
+-- (Resumen de la migración ya aplicada en el proyecto Supabase "Tambu Sushi";
+--  el SQL completo está en Supabase → Database → Migrations)
+-- =====================================================================
+-- products        Carta oficial: precio y opciones (pesos en CL, centavos en VE).
+--                 Lectura pública; solo el servidor/panel de Supabase la edita.
+-- orders          + correo_contacto, referencia_direccion
+-- payments        + url_retorno, intentos_verificacion
+-- branch_staff    Personal de cada sucursal (user_id, sucursal_id, rol)
+-- es_personal_de(sucursal)          ¿el usuario trabaja en esa sucursal?
+-- cambiar_estado_pedido(id, estado) pagado → en_preparacion → listo → entregado
+--                                   (o cancelado). Nunca permite marcar "pagado".
+-- Políticas: el personal ve los pedidos y el detalle de su sucursal.
+-- Realtime: la tabla orders se publica para el panel en vivo.

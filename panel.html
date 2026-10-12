@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel de pedidos · Tambú Sushi</title>
+  <meta name="description" content="Panel interno de pedidos por sucursal.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F8F6F0">
+  <script src="js/theme.js"></script>
+  <link rel="icon" type="image/png" href="assets/images/logo-circular-mini.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/motion.css">
+</head>
+<body data-page="panel">
+  <div id="site-header"></div>
+
+  <main id="contenido">
+    <div class="container" data-panel style="padding:32px 16px 72px">
+      <div data-vista="sin-conexion" hidden>
+        <div class="state"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg><h2 style="font-size:1.3rem">No hay conexión con el servidor</h2><p>Revisa tu internet y recarga.</p></div>
+      </div>
+
+      <div data-vista="login" hidden>
+        <form class="auth-card form-grid" data-form="panel-login" style="max-width:420px">
+          <span class="eyebrow">Personal Tambú</span>
+          <h1 style="font-size:1.6rem;margin:0">Panel de pedidos</h1>
+          <button class="btn btn--outline btn--block btn--google" type="button" data-panel-google><svg class="icon icon--google" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" stroke="none" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path fill="#34A853" stroke="none" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" stroke="none" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1A10 10 0 0 0 2 12c0 1.6.4 3.1 1.1 4.6z"/><path fill="#EA4335" stroke="none" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3.1 7.4L6.4 10C7.2 7.7 9.4 5.9 12 5.9z"/></svg> Entrar con Google</button>
+          <div class="divider-text"><span>o con tu correo</span></div>
+          <div class="field"><label for="pl-correo">Correo</label><input class="input" id="pl-correo" name="correo" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="pl-clave">Contraseña</label><input class="input" id="pl-clave" name="clave" type="password" autocomplete="current-password" required></div>
+          <button class="btn btn--primary btn--block" type="submit">Entrar</button>
+          <p class="error-inline" data-msg aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div data-vista="sin-permiso" hidden>
+        <div class="state">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg>
+          <h2 style="font-size:1.3rem">Tu cuenta aún no tiene una sucursal asignada</h2>
+          <p>Pide al administrador que agregue <b data-mi-correo></b> como personal de tu sucursal.</p>
+          <button class="btn btn--outline btn--sm" type="button" data-salir>Cerrar sesión</button>
+        </div>
+      </div>
+
+      <div data-vista="panel" hidden>
+        <div class="panel-bar">
+          <div>
+            <span class="eyebrow">Panel de pedidos</span>
+            <h1 style="font-size:1.6rem;margin:6px 0 0" data-panel-sucursal>Sucursal</h1>
+          </div>
+          <div class="row">
+            <label hidden><span class="visually-hidden">Sucursal</span><select class="select" data-elegir-sucursal style="min-height:40px"></select></label>
+            <span class="live-dot" data-en-vivo><span></span>En vivo</span>
+            <span class="muted" data-actualizado></span>
+            <button class="btn btn--outline btn--sm" type="button" data-activar-avisos>Activar sonido</button>
+            <button class="btn btn--ghost btn--sm" type="button" data-salir>Salir</button>
+          </div>
+        </div>
+        <div data-panel-msg aria-live="polite"></div>
+        <div class="board" data-tablero></div>
+        <details class="faq" style="margin-top:32px"><summary>Entregados hoy</summary><ul class="kv" data-entregados></ul></details>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/site-data.js"></script>
+  <script type="text/x-tambu" src="js/branches.js"></script>
+  <script type="text/x-tambu" src="js/cart.js"></script>
+  <script type="text/x-tambu" src="js/navigation.js"></script>
+  <script type="text/x-tambu" src="js/main.js"></script>
+  <script type="text/x-tambu" src="js/supabase-client.js"></script>
+  <script type="text/x-tambu" src="js/my-orders.js"></script>
+  <script type="text/x-tambu" src="js/panel.js"></script>
+  <script type="text/x-tambu" src="js/motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pedidos · Admin · Tambú Sushi</title>
+  <meta name="description" content="Pedidos de todas las sucursales (solo administradores).">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F8F6F0">
+  <script src="js/theme.js"></script>
+  <link rel="icon" type="image/png" href="assets/images/logo-circular-mini.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body data-page="admin-pedidos">
+  <div id="site-header"></div>
+
+  <main id="contenido">
+    <div class="container" data-admin style="padding:32px 16px 72px">
+      <div data-vista="sin-conexion" hidden>
+        <div class="state"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg><h2 style="font-size:1.3rem">No hay conexión con el servidor</h2><p>Revisa tu internet y recarga.</p></div>
+      </div>
+
+      <div data-vista="login" hidden>
+        <div class="state">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
+          <h2 style="font-size:1.3rem">Inicia sesión con tu cuenta de administrador</h2>
+          <p>Esta sección solo está disponible para administradores de Tambú.</p>
+          <a class="btn btn--primary" href="mi-cuenta.html">Iniciar sesión</a>
+        </div>
+      </div>
+
+      <div data-vista="sin-permiso" hidden>
+        <div class="state">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
+          <h2 style="font-size:1.3rem">Esta cuenta no es administradora</h2>
+          <p>Solo las cuentas de administrador pueden ver los pedidos.</p>
+          <a class="btn btn--outline btn--sm" href="mi-cuenta.html">Volver a mi cuenta</a>
+        </div>
+      </div>
+
+      <div data-vista="lista" hidden>
+        <div class="panel-bar">
+          <div>
+            <span class="eyebrow">Administración</span>
+            <h1 style="font-size:1.6rem;margin:6px 0 0">Pedidos</h1>
+          </div>
+          <div class="row">
+            <span class="live-dot" data-en-vivo><span></span>En vivo</span>
+            <button class="btn btn--outline btn--sm" type="button" data-activar-sonido>Activar sonido</button>
+            <a class="btn btn--ghost btn--sm" href="admin.html" data-solo-superadmin hidden>Panel</a>
+          </div>
+        </div>
+
+        <div class="chip-row" role="group" aria-label="Filtrar pedidos" style="margin-top:20px">
+          <button class="chip is-active" type="button" data-filtro="pendientes" aria-pressed="true">Pendientes</button>
+          <button class="chip" type="button" data-filtro="sinfudo" aria-pressed="false">Sin registrar en Fudo <span class="chip__n" data-cuenta-sinfudo></span></button>
+          <button class="chip" type="button" data-filtro="finalizados" aria-pressed="false">Finalizados</button>
+          <button class="chip" type="button" data-filtro="todos" aria-pressed="false">Todos</button>
+        </div>
+
+        <div class="admin-filtros">
+          <label><span class="visually-hidden">Sucursal</span><select class="select" data-f-sucursal><option value="">Todas las sucursales</option></select></label>
+          <label><span class="visually-hidden">Fecha</span><select class="select" data-f-dias>
+            <option value="1" selected>Hoy</option>
+            <option value="7">Últimos 7 días</option>
+            <option value="30">Últimos 30 días</option>
+            <option value="0">Todo</option>
+          </select></label>
+          <label class="admin-filtros__buscar"><span class="visually-hidden">Buscar</span><input class="input" type="search" data-f-buscar placeholder="Buscar por N°, nombre o teléfono"></label>
+        </div>
+
+        <div data-admin-msg aria-live="polite"></div>
+        <p class="muted" data-resumen style="margin:16px 0 0"></p>
+        <div data-lista></div>
+      </div>
+    </div>
+  </main>
+
+  <div class="detalle" data-detalle hidden>
+    <div class="detalle__panel" role="dialog" aria-modal="true" aria-labelledby="detalle-titulo">
+      <button class="icon-btn detalle__cerrar" type="button" data-cerrar-detalle aria-label="Cerrar"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div data-detalle-cuerpo></div>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/site-data.js"></script>
+  <script type="text/x-tambu" src="js/branches.js"></script>
+  <script type="text/x-tambu" src="js/cart.js"></script>
+  <script type="text/x-tambu" src="js/navigation.js"></script>
+  <script type="text/x-tambu" src="js/main.js"></script>
+  <script type="text/x-tambu" src="js/supabase-client.js"></script>
+  <script type="text/x-tambu" src="js/my-orders.js"></script>
+  <script type="text/x-tambu" src="js/admin-orders.js"></script>
+  <script type="text/x-tambu" src="js/admin-shell.js"></script>
+  <script type="text/x-tambu" src="js/motion.js"></script>
+</body>
+</html>

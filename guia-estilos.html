@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía de estilos · Tambú Sushi Talca</title>
+  <meta name="description" content="Identidad visual y componentes compartidos del sitio de Tambú Sushi (Fase A).">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F8F6F0">
+  <script src="js/theme.js"></script>
+  <link rel="icon" type="image/png" href="assets/images/logo-circular-mini.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/guia-estilos.css">
+</head>
+<body data-page="">
+  <div id="site-header"></div>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Fase A · uso interno</span>
+        <h1>Guía de estilos</h1>
+        <p class="lead">Colores, tipografía y piezas que se reutilizan en todas las páginas. Esta página no aparece en el menú: sirve para revisar la identidad antes de construir las secciones.</p>
+      </div>
+    </section>
+
+    <!-- 1. Marca -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head"><div><span class="eyebrow">01 · Marca</span><h2>Logotipos</h2></div></div>
+        <div class="grid grid--2">
+          <figure class="sg-logo sg-logo--light">
+            <img src="assets/images/logo-circular.png" alt="Logo circular de Tambú Sushi con bambú" width="260" height="238">
+            <figcaption>Circular · sobre fondos claros (cabecera, ícono de pestaña)</figcaption>
+          </figure>
+          <figure class="sg-logo sg-logo--dark">
+            <img src="assets/images/logo-tipografico.png" alt="Logo tipográfico de Tambú Sushi" width="220" height="220">
+            <figcaption>Tipográfico · sobre negro (pie de página, piezas de contraste)</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Color -->
+    <section class="section section--paper">
+      <div class="container">
+        <div class="section__head"><div><span class="eyebrow">02 · Color</span><h2>Paleta</h2></div>
+          <p class="sg-note">Crema y madera dominan. Salmón solo para acciones. Verde y rojo, solo en detalles.</p></div>
+        <div class="sg-swatches">
+          <div class="sg-swatch" style="--c:#F8F6F0"><span></span><b>Blanco crema</b><code>#F8F6F0</code><em>Fondo principal</em></div>
+          <div class="sg-swatch" style="--c:#E9DFCB"><span></span><b>Madera clara</b><code>#E9DFCB</code><em>Superficies</em></div>
+          <div class="sg-swatch" style="--c:#D9B979"><span></span><b>Bambú</b><code>#D9B979</code><em>Detalles naturales</em></div>
+          <div class="sg-swatch" style="--c:#121212"><span></span><b>Negro azabache</b><code>#121212</code><em>Texto y contraste</em></div>
+          <div class="sg-swatch" style="--c:#FF6B4A"><span></span><b>Naranja salmón</b><code>#FF6B4A</code><em>Botones de acción</em></div>
+          <div class="sg-swatch" style="--c:#7A9A60"><span></span><b>Verde wasabi</b><code>#7A9A60</code><em>Abierto · etiquetas</em></div>
+          <div class="sg-swatch" style="--c:#A8221B"><span></span><b>Rojo nori</b><code>#A8221B</code><em>Cerrado · etiquetas</em></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Tipografía -->
+    <section class="section">
+      <div class="container grid grid--2">
+        <div>
+          <span class="eyebrow">03 · Tipografía</span>
+          <h2>Poppins para titular, Inter para leer</h2>
+          <p>Los títulos usan Poppins en peso 700–800. El texto corrido, precios pequeños y formularios usan Inter en 400–600.</p>
+        </div>
+        <div class="stack sg-type">
+          <h1>Frescura al momento</h1>
+          <h2>Rolls calientes</h2>
+          <h3>Roll demo de salmón y palta</h3>
+          <p>Descripción de producto en Inter 16 px, pensada para leerse con comodidad en el teléfono.</p>
+          <span class="eyebrow">Etiqueta superior</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Botones y estados -->
+    <section class="section section--paper">
+      <div class="container">
+        <div class="section__head"><div><span class="eyebrow">04 · Interacción</span><h2>Botones, etiquetas y estado</h2></div></div>
+        <div class="sg-row">
+          <a class="btn btn--primary" href="carta.html">Ver la carta</a>
+          <a class="btn btn--outline" href="promociones.html">Ver promociones</a>
+          <a class="btn btn--dark" data-whatsapp="Hola Tambú Sushi, quiero hacer un pedido.">Pedir por WhatsApp</a>
+          <button class="btn btn--ghost" type="button" data-demo-toast>Probar aviso</button>
+          <button class="btn btn--primary" type="button" disabled>Desactivado</button>
+        </div>
+        <hr class="divider">
+        <div class="sg-row">
+          <span class="badge badge--salmon">Popular</span>
+          <span class="badge badge--wasabi">Nuevo</span>
+          <span class="badge badge--nori">Más vendido</span>
+          <span class="badge badge--wasabi">Veggie</span>
+          <span class="badge badge--neutro">Demo</span>
+          <span class="status-pill" data-estado-local><span class="status-pill__dot"></span><span class="status-pill__text">Horario</span></span>
+        </div>
+        <hr class="divider">
+        <div class="chip-row" role="list" id="sg-chips"></div>
+      </div>
+    </section>
+
+    <!-- 5. Tarjetas -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <div><span class="eyebrow">05 · Producto</span><h2>Tarjeta de producto</h2></div>
+          <p class="sg-note">Mismas tarjetas que usa la carta. «Agregar» suma al carrito real de demostración.</p>
+        </div>
+        <div class="product-grid" id="sg-cards"></div>
+        <div class="sg-row" style="margin-top:24px">
+          <button class="btn btn--outline btn--sm" type="button" data-vaciar>Vaciar carrito de prueba</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Formularios -->
+    <section class="section section--paper">
+      <div class="container grid grid--2">
+        <div class="stack">
+          <span class="eyebrow">06 · Formularios</span>
+          <h2>Campos</h2>
+          <div class="search">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+            <label class="visually-hidden" for="sg-buscar">Buscar en la carta</label>
+            <input class="input" id="sg-buscar" type="search" placeholder="Buscar en la carta">
+          </div>
+          <div class="field">
+            <label for="sg-nombre">Nombre</label>
+            <input class="input" id="sg-nombre" type="text" placeholder="Tu nombre" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="sg-entrega">Modalidad</label>
+            <select class="select" id="sg-entrega"><option>Retiro en local</option><option>Despacho a domicilio</option></select>
+          </div>
+          <div class="field">
+            <label for="sg-obs">Observaciones</label>
+            <textarea class="textarea" id="sg-obs" placeholder="Ej: sin sésamo"></textarea>
+            <span class="hint">Opcional</span>
+          </div>
+        </div>
+        <div class="stack">
+          <span class="eyebrow">Cantidad y avisos</span>
+          <div class="qty" data-qty>
+            <button type="button" data-paso="-1" aria-label="Quitar uno"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+            <output aria-live="polite">1</output>
+            <button type="button" data-paso="1" aria-label="Agregar uno"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+          <div class="demo-notice">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg>
+            <span><strong>Pagos en una etapa futura.</strong> Este checkout es solo de demostración.</span>
+          </div>
+          <div class="state">
+            <h3>Tu carrito está vacío</h3>
+            <p>Explora la carta y agrega tus rolls favoritos.</p>
+            <a class="btn btn--primary btn--sm" href="carta.html">Ir a la carta</a>
+          </div>
+          <div class="skeleton" style="height:56px" aria-label="Cargando"></div>
+          <ul class="hours" data-horario></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Texturas -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head"><div><span class="eyebrow">07 · Materiales</span><h2>Texturas, con moderación</h2></div></div>
+        <div class="grid grid--3">
+          <div class="photo" data-label="Foto provisional · reemplazar"></div>
+          <div class="bamboo-panel sg-texture" role="img" aria-label="Textura de bambú"></div>
+          <div class="sg-texture sg-texture--wood" role="img" aria-label="Textura de madera clara"></div>
+        </div>
+        <div class="bamboo-strip" style="margin-top:32px"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/site-data.js"></script>
+  <script type="text/x-tambu" src="js/branches.js"></script>
+  <script type="text/x-tambu" src="js/cart.js"></script>
+  <script type="text/x-tambu" src="js/navigation.js"></script>
+  <script type="text/x-tambu" src="js/main.js"></script>
+  <script type="text/x-tambu" src="js/supabase-client.js"></script>
+  <script type="text/x-tambu" src="js/my-orders.js"></script>
+  <script type="text/x-tambu" src="js/products.js"></script>
+  <script type="text/x-tambu" src="js/guia-estilos.js"></script>
+  <script type="text/x-tambu" src="js/motion.js"></script>
+</body>
+</html>

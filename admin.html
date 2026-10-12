@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel · Tambú Sushi</title>
+  <meta name="description" content="Panel del superadministrador de Tambú Sushi.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F8F6F0">
+  <script src="js/theme.js"></script>
+  <link rel="icon" type="image/png" href="assets/images/logo-circular-mini.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body data-page="admin" class="sa-body">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="sa" data-sa>
+    <aside class="sa-side" id="sa-side" data-sa-side aria-label="Panel del superadministrador"></aside>
+    <div class="sa-overlay" data-sa-cerrar hidden></div>
+
+    <div class="sa-main">
+      <header class="sa-top">
+        <button class="icon-btn sa-top__menu" type="button" data-sa-abrir aria-label="Abrir menú del panel" aria-controls="sa-side" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </button>
+        <div class="sa-top__titulo"><span class="sa-top__modo">Modo superadministrador</span><h1 data-sa-titulo>Panel</h1></div>
+        <div class="sa-top__acciones">
+          <span class="sa-online" data-sa-online><span class="status-pill__dot"></span><span>Sitio en línea</span></span>
+          <a class="btn btn--outline btn--sm" href="index.html" target="_blank" rel="noopener" data-sa-ver-sitio>Ver sitio web</a>
+          <button class="icon-btn theme-toggle" type="button" aria-label="Cambiar a modo oscuro">
+            <svg class="icon icon--luna" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 14.5A7.5 7.5 0 0 1 9.5 4.5a7.5 7.5 0 1 0 10 10z"/></svg>
+            <svg class="icon icon--sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main id="contenido" class="sa-content" data-config>
+        <div data-config-msg aria-live="polite"></div>
+
+        <!-- Estados de acceso -->
+        <div data-vista="cargando"><div class="skeleton" style="height:240px"></div></div>
+        <div data-vista="sin-conexion" hidden><div class="state"><h2 style="font-size:1.3rem">No hay conexión con el servidor</h2><p>Revisa tu internet y recarga la página.</p></div></div>
+        <div data-vista="login" hidden>
+          <div class="state"><h2 style="font-size:1.3rem">Inicia sesión con la cuenta de superadministrador</h2>
+            <p>El panel se abre automáticamente al iniciar sesión con esa cuenta.</p>
+            <a class="btn btn--primary" href="mi-cuenta.html">Iniciar sesión</a></div>
+        </div>
+        <div data-vista="sin-permiso" hidden>
+          <div class="state"><h2 style="font-size:1.3rem">Esta cuenta no tiene acceso al panel</h2>
+            <p>Solo el superadministrador puede entrar aquí.</p><a class="btn btn--outline btn--sm" href="index.html">Volver a la tienda</a></div>
+        </div>
+
+        <!-- ============ INICIO ============ -->
+        <section data-sa-vista="inicio" hidden>
+          <div class="sa-saludo"><h2 data-sa-saludo>Hola</h2><p class="muted">Todo lo que cambies aquí se ve en la web al instante. No necesitas tocar código.</p></div>
+          <div class="sa-stats" data-sa-stats></div>
+          <div class="sa-grid-2">
+            <section class="info-card">
+              <h3 class="config-card__title">Accesos rápidos</h3>
+              <div class="sa-atajos">
+                <a class="sa-atajo" href="#carta" data-nuevo="producto"><b>Agregar comida</b><small>Nuevo producto en la carta</small></a>
+                <a class="sa-atajo" href="#promociones" data-nuevo="promo"><b>Nueva promoción</b><small>Tablas, combos y ofertas</small></a>
+                <a class="sa-atajo" href="#textos"><b>Cambiar textos</b><small>Títulos y mensajes de cada página</small></a>
+                <a class="sa-atajo" href="#fotos"><b>Subir fotos</b><small>Logo, portada y Nosotros</small></a>
+                <a class="sa-atajo" href="admin-pedidos.html"><b>Ver pedidos</b><small>Pendientes y finalizados</small></a>
+                <a class="sa-atajo" href="#pagos"><b>Medios de pago</b><small>Efectivo, Webpay y Mercado Pago</small></a>
+              </div>
+            </section>
+            <section class="info-card">
+              <h3 class="config-card__title">Estado de los pagos</h3>
+              <ul class="kv" data-sa-pagos-resumen></ul>
+              <h3 class="config-card__title" style="margin-top:24px">Últimos cambios</h3>
+              <ul class="kv" data-sa-ultimos></ul>
+            </section>
+          </div>
+        </section>
+
+        <!-- ============ CARTA Y PRECIOS ============ -->
+        <section data-sa-vista="carta" hidden>
+          <div class="sa-head">
+            <p class="muted">Agrega comidas, cambia precios y fotos, o escóndelas de la web. El precio que se cobra es siempre el de aquí.</p>
+            <button class="btn btn--primary" type="button" data-nuevo-producto>+ Agregar comida</button>
+          </div>
+          <div class="sa-toolbar" data-carta-filtros>
+            <div class="sa-segment" role="group" aria-label="País">
+              <button type="button" data-pais="CL" aria-pressed="true">Chile</button>
+              <button type="button" data-pais="VE" aria-pressed="false">Venezuela</button>
+            </div>
+            <label><span class="visually-hidden">Categoría</span><select class="select" data-carta-cat></select></label>
+            <label class="sa-buscar"><span class="visually-hidden">Buscar</span><input class="input" type="search" placeholder="Buscar comida…" data-carta-q></label>
+            <label class="config-check"><input type="checkbox" data-carta-archivados> Ver eliminados</label>
+          </div>
+          <ul class="sa-productos" data-lista-productos></ul>
+
+          <section class="info-card" style="margin-top:32px">
+            <div class="sa-head"><h3 class="config-card__title" style="margin:0">Categorías de la carta</h3>
+              <button class="btn btn--outline btn--sm" type="button" data-cat-agregar>+ Nueva categoría</button></div>
+            <p class="muted">Cambia nombres, el orden o esconde una categoría. Las comidas de una categoría escondida no se muestran.</p>
+            <div data-categorias></div>
+            <button class="btn btn--dark" type="button" data-cat-guardar style="margin-top:16px">Guardar categorías</button>
+          </section>
+        </section>
+
+        <!-- ============ PROMOCIONES ============ -->
+        <section data-sa-vista="promociones" hidden>
+          <div class="sa-head">
+            <p class="muted">Las promociones aparecen en la página Promociones y en el inicio. Usa el «precio antes» para mostrar el descuento tachado.</p>
+            <button class="btn btn--primary" type="button" data-nueva-promo>+ Nueva promoción</button>
+          </div>
+          <div class="sa-toolbar">
+            <div class="sa-segment" role="group" aria-label="País">
+              <button type="button" data-pais="CL" aria-pressed="true">Chile</button>
+              <button type="button" data-pais="VE" aria-pressed="false">Venezuela</button>
+            </div>
+          </div>
+          <ul class="sa-productos" data-lista-promos></ul>
+        </section>
+
+        <!-- ============ PAGOS ============ -->
+        <section data-sa-vista="pagos" hidden>
+          <p class="muted">Elige qué medios de pago ven los clientes en Chile. Venezuela coordina el pago por WhatsApp.</p>
+          <div class="config-grid">
+            <section class="info-card config-card">
+              <h3 class="config-card__title">Medios de pago activos</h3>
+              <form class="form-grid" data-form="medios">
+                <label class="choice"><input type="checkbox" name="webpay"><span class="choice__mark"></span>
+                  <span class="choice__text"><b>Webpay · Flow</b><small>Débito, crédito y prepago. Requiere las claves de Flow.</small></span></label>
+                <label class="choice"><input type="checkbox" name="efectivo"><span class="choice__mark"></span>
+                  <span class="choice__text"><b>Efectivo al retirar (prueba)</b><small>Para probar pedidos sin pagar. Quedan marcados como prueba y no suman puntos. Apágalo antes de lanzar.</small></span></label>
+                <label class="choice"><input type="checkbox" name="mp" disabled><span class="choice__mark"></span>
+                  <span class="choice__text"><b>Mercado Pago</b><small data-mp-nota>Se activa cuando conectemos el cobro. Ya puedes dejar tus claves guardadas abajo.</small></span></label>
+                <button class="btn btn--dark" type="submit">Guardar medios de pago</button>
+              </form>
+            </section>
+
+            <section class="info-card config-card" id="flow">
+              <h3 class="config-card__title">Webpay · Flow</h3>
+              <div data-flow-estado></div>
+              <form class="form-grid" data-form="flow" autocomplete="off" novalidate style="margin-top:16px">
+                <div class="field"><label for="flow-api">API Key</label>
+                  <input class="input" id="flow-api" name="api" type="password" autocomplete="off" spellcheck="false" required>
+                  <span class="hint">Se guarda cifrada. Después nadie podrá verla, ni desde esta pantalla.</span></div>
+                <div class="field"><label for="flow-secret">Secret Key</label>
+                  <input class="input" id="flow-secret" name="secret" type="password" autocomplete="off" spellcheck="false" required></div>
+                <div class="field"><label for="flow-modo">Modo</label>
+                  <select class="select" id="flow-modo" name="modo">
+                    <option value="sandbox">Pruebas (sandbox.flow.cl) · no cobra dinero</option>
+                    <option value="produccion">Real (flow.cl) · cobra dinero</option>
+                  </select></div>
+                <button class="btn btn--primary" type="submit">Guardar claves de Flow</button>
+              </form>
+              <form class="sa-inline" data-form="flow-modo" style="margin-top:16px" hidden>
+                <label for="flow-modo-solo" class="muted">Cambiar solo el modo:</label>
+                <select class="select" id="flow-modo-solo" name="modo">
+                  <option value="sandbox">Pruebas</option>
+                  <option value="produccion">Real</option>
+                </select>
+                <button class="btn btn--outline btn--sm" type="submit">Cambiar</button>
+              </form>
+            </section>
+
+            <section class="info-card config-card" id="mercado-pago">
+              <h3 class="config-card__title">Mercado Pago</h3>
+              <div data-mp-estado></div>
+              <form class="form-grid" data-form="mp" autocomplete="off" novalidate style="margin-top:16px">
+                <div class="field"><label for="mp-token">Access Token</label>
+                  <input class="input" id="mp-token" name="token" type="password" autocomplete="off" spellcheck="false" placeholder="APP_USR-… o TEST-…" required>
+                  <span class="hint">En Mercado Pago: Tus integraciones → Credenciales. Se guarda cifrado.</span></div>
+                <div class="field"><label for="mp-public">Public Key</label>
+                  <input class="input" id="mp-public" name="publica" autocomplete="off" spellcheck="false" placeholder="APP_USR-… o TEST-…" required></div>
+                <div class="field"><label for="mp-modo">Modo</label>
+                  <select class="select" id="mp-modo" name="modo">
+                    <option value="sandbox">Pruebas (credenciales de prueba)</option>
+                    <option value="produccion">Real (credenciales de producción)</option>
+                  </select></div>
+                <button class="btn btn--primary" type="submit">Guardar claves de Mercado Pago</button>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <!-- ============ SUCURSALES ============ -->
+        <section data-sa-vista="sucursales" hidden>
+          <section class="info-card config-card">
+            <p class="muted" style="margin-top:0">WhatsApp con código de país, solo números (ej. 56912345678). Si está vacío se usa el número general.</p>
+            <div class="config-sucursales" data-sucursales></div>
+          </section>
+        </section>
+
+        <!-- ============ PUNTOS ============ -->
+        <section data-sa-vista="puntos" hidden>
+          <div class="config-grid">
+            <section class="info-card config-card">
+              <h3 class="config-card__title">Tambú Puntos</h3>
+              <div data-puntos></div>
+            </section>
+            <section class="info-card config-card">
+              <h3 class="config-card__title">Venezuela · tasa del día</h3>
+              <form class="form-grid" data-form="tasa">
+                <div class="field"><label for="tasa-bs">Bolívares por 1 US$</label>
+                  <input class="input" id="tasa-bs" name="tasa" type="number" step="0.0001" min="0" inputmode="decimal" placeholder="Ej: 150,25">
+                  <span class="hint" data-tasa-fecha></span></div>
+                <button class="btn btn--dark" type="submit">Guardar tasa</button>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <!-- ============ TEXTOS ============ -->
+        <section data-sa-vista="textos" hidden>
+          <div class="sa-tabs" role="tablist" data-textos-tabs>
+            <button type="button" role="tab" data-tab="paginas" aria-selected="true">Textos de las páginas</button>
+            <button type="button" role="tab" data-tab="negocio" aria-selected="false">Contacto y horario</button>
+            <button type="button" role="tab" data-tab="marca" aria-selected="false">Nosotros</button>
+            <button type="button" role="tab" data-tab="faq" aria-selected="false">Preguntas frecuentes</button>
+          </div>
+
+          <div data-textos-panel="paginas">
+            <div class="sa-editor">
+              <div class="sa-editor__form">
+                <label class="field"><span class="visually-hidden">Página</span>
+                  <select class="select" data-textos-pagina>
+                    <option value="index.html|general">Cabecera y pie (todas las páginas)</option>
+                    <option value="index.html|inicio" selected>Inicio</option>
+                    <option value="carta.html|carta">Carta</option>
+                    <option value="promociones.html|promociones">Promociones</option>
+                    <option value="fidelizacion.html|fidelizacion">Fidelización</option>
+                    <option value="nosotros.html|nosotros">Nosotros</option>
+                    <option value="contacto.html|contacto">Contacto</option>
+                    <option value="sucursales.html|sucursales">Sucursales</option>
+                    <option value="carrito.html|carrito">Carrito</option>
+                    <option value="checkout.html|checkout">Finalizar pedido</option>
+                  </select></label>
+                <p class="hint">Escribe y mira el cambio a la derecha. Usa <b>*asteriscos*</b> para destacar en color y <b>**dobles**</b> para negrita (solo en los títulos que lo permiten). Deja un campo vacío para volver al texto original.</p>
+                <div class="sa-campos" data-textos-campos><div class="skeleton" style="height:200px"></div></div>
+                <div class="sa-sticky-acciones">
+                  <button class="btn btn--primary" type="button" data-textos-guardar>Guardar textos</button>
+                  <button class="btn btn--ghost btn--sm" type="button" data-textos-descartar>Descartar cambios</button>
+                </div>
+              </div>
+              <div class="sa-preview">
+                <div class="sa-preview__bar"><b>Vista previa</b><a class="btn btn--ghost btn--sm" href="index.html" target="_blank" rel="noopener" data-preview-abrir>Abrir en otra pestaña</a></div>
+                <iframe title="Vista previa de la página" data-preview src="about:blank"></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div data-textos-panel="negocio" hidden>
+            <form class="info-card form-grid" data-form="negocio">
+              <h3 class="config-card__title">Contacto general</h3>
+              <div class="sa-grid-2">
+                <div class="field"><label for="neg-wa">WhatsApp general (solo números con código de país)</label><input class="input" id="neg-wa" name="whatsapp" inputmode="numeric" placeholder="56912345678"></div>
+                <div class="field"><label for="neg-wav">Cómo se muestra el número</label><input class="input" id="neg-wav" name="whatsappVisible" placeholder="+56 9 1234 5678"></div>
+                <div class="field"><label for="neg-mail">Correo de contacto</label><input class="input" id="neg-mail" name="email" type="email" placeholder="hola@tambusushi.cl"></div>
+                <div class="field"><label for="neg-ig">Instagram (enlace completo)</label><input class="input" id="neg-ig" name="instagram" placeholder="https://instagram.com/…"></div>
+                <div class="field"><label for="neg-fb">Facebook</label><input class="input" id="neg-fb" name="facebook" placeholder="https://facebook.com/…"></div>
+                <div class="field"><label for="neg-tt">TikTok</label><input class="input" id="neg-tt" name="tiktok" placeholder="https://tiktok.com/@…"></div>
+              </div>
+              <h3 class="config-card__title" style="margin-top:8px">Horario de atención</h3>
+              <p class="hint" style="margin:0">Se usa para mostrar «Abierto» o «Cerrado» y en el pie de página.</p>
+              <div class="sa-horario" data-horario-dias></div>
+              <h4 style="margin:8px 0 0">Resumen que se muestra en la web</h4>
+              <div data-horario-resumen></div>
+              <button class="btn btn--ghost btn--sm" type="button" data-resumen-agregar style="justify-self:start">+ Agregar línea</button>
+              <button class="btn btn--primary" type="submit" style="justify-self:start">Guardar contacto y horario</button>
+            </form>
+          </div>
+
+          <div data-textos-panel="marca" hidden>
+            <form class="info-card form-grid" data-form="marca">
+              <h3 class="config-card__title">Página Nosotros y frases de marca</h3>
+              <div class="field"><label for="m-lema">Lema</label><input class="input" id="m-lema" name="lema" maxlength="140"></div>
+              <div class="field"><label for="m-intro">Presentación corta</label><textarea class="textarea" id="m-intro" name="intro" maxlength="400"></textarea></div>
+              <div class="field"><label for="m-hist">Historia (un párrafo por línea en blanco)</label><textarea class="textarea" id="m-hist" name="historia" rows="8" maxlength="3000"></textarea></div>
+              <div class="field"><label for="m-cita">Frase destacada</label><input class="input" id="m-cita" name="cita" maxlength="200"></div>
+              <h4 style="margin:8px 0 0">Valores</h4>
+              <div class="sa-valores" data-valores></div>
+              <button class="btn btn--primary" type="submit" style="justify-self:start">Guardar Nosotros</button>
+            </form>
+          </div>
+
+          <div data-textos-panel="faq" hidden>
+            <form class="info-card form-grid" data-form="faq">
+              <h3 class="config-card__title">Preguntas frecuentes</h3>
+              <h4 style="margin:0">Página Contacto</h4>
+              <div data-faq="contacto"></div>
+              <button class="btn btn--ghost btn--sm" type="button" data-faq-agregar="contacto" style="justify-self:start">+ Agregar pregunta</button>
+              <h4 style="margin:8px 0 0">Página Fidelización</h4>
+              <div data-faq="fidelizacion"></div>
+              <button class="btn btn--ghost btn--sm" type="button" data-faq-agregar="fidelizacion" style="justify-self:start">+ Agregar pregunta</button>
+              <button class="btn btn--primary" type="submit" style="justify-self:start">Guardar preguntas</button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ============ FOTOS ============ -->
+        <section data-sa-vista="fotos" hidden>
+          <p class="muted">Sube fotos desde tu teléfono o computador. Se ajustan solas de tamaño para que la web cargue rápido. Las fotos de cada comida se cambian en <a href="#carta">Carta y precios</a>.</p>
+          <div class="sa-fotos" data-fotos-sitio></div>
+        </section>
+
+        <!-- ============ MENÚ ============ -->
+        <section data-sa-vista="menu" hidden>
+          <section class="info-card">
+            <p class="muted" style="margin-top:0">Cambia los nombres del menú de la cabecera y del pie, su orden, o escóndelos. También puedes agregar un enlace propio (por ejemplo, a tu Instagram).</p>
+            <ul class="sa-menu" data-menu-lista></ul>
+            <div class="row" style="margin-top:16px">
+              <button class="btn btn--outline btn--sm" type="button" data-menu-agregar>+ Agregar enlace</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-menu-restaurar>Volver al menú original</button>
+            </div>
+            <button class="btn btn--primary" type="button" data-menu-guardar style="margin-top:16px">Guardar menú</button>
+          </section>
+        </section>
+
+        <!-- ============ FUENTES ============ -->
+        <section data-sa-vista="fuentes" hidden>
+          <div class="sa-grid-2">
+            <form class="info-card form-grid" data-form="fuentes">
+              <h3 class="config-card__title">Tipografías de la web</h3>
+              <div class="field"><label for="f-titulo">Títulos</label><select class="select" id="f-titulo" name="titulo"></select></div>
+              <div class="field"><label for="f-texto">Textos y botones</label><select class="select" id="f-texto" name="texto"></select></div>
+              <p class="hint" style="margin:0">Combinaciones recomendadas:</p>
+              <div class="sa-presets" data-fuentes-presets></div>
+              <button class="btn btn--primary" type="submit" style="justify-self:start">Guardar fuentes</button>
+            </form>
+            <div class="info-card sa-muestra" data-fuentes-muestra>
+              <span class="eyebrow">Vista previa</span>
+              <h2 class="sa-muestra__titulo">Sushi fresco, <em>hecho al momento.</em></h2>
+              <p class="sa-muestra__texto">Ingredientes frescos, rolls preparados al instante y la comodidad de pedir en pocos clics.</p>
+              <span class="btn btn--primary sa-muestra__texto">Ver la carta</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ EQUIPO ============ -->
+        <section data-sa-vista="equipo" hidden>
+          <section class="info-card config-card">
+            <p class="muted" style="margin-top:0">La persona primero debe crear su cuenta en la web (Mi cuenta). Luego escribe aquí su correo.</p>
+            <form class="config-equipo-form" data-form="equipo">
+              <label><span class="visually-hidden">Correo</span><input class="input" name="email" type="email" placeholder="correo@ejemplo.cl" required></label>
+              <label><span class="visually-hidden">Rol</span><select class="select" name="rol">
+                <option value="personal">Personal de sucursal (panel de cocina)</option>
+                <option value="admin">Administrador (solo ve pedidos)</option>
+                <option value="superadmin">Superadministrador (todo)</option>
+              </select></label>
+              <label data-equipo-sucursal><span class="visually-hidden">Sucursal</span><select class="select" name="sucursal"></select></label>
+              <button class="btn btn--primary" type="submit">Dar acceso</button>
+            </form>
+            <div data-equipo></div>
+          </section>
+        </section>
+
+        <!-- ============ HISTORIAL ============ -->
+        <section data-sa-vista="historial" hidden>
+          <section class="info-card"><ul class="kv" data-historial></ul></section>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Editor de comida / promoción -->
+  <dialog class="sa-dialog" data-editor aria-labelledby="editor-titulo">
+    <form class="sa-dialog__inner" data-form="producto" novalidate>
+      <header class="sa-dialog__head">
+        <h2 id="editor-titulo" data-editor-titulo>Comida</h2>
+        <button class="icon-btn" type="button" data-editor-cerrar aria-label="Cerrar"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </header>
+      <div class="sa-dialog__body" data-editor-cuerpo></div>
+      <footer class="sa-dialog__foot">
+        <button class="btn btn--ghost btn--sm sa-peligro" type="button" data-editor-archivar>Eliminar de la carta</button>
+        <span class="sa-dialog__msg" data-editor-msg role="alert"></span>
+        <button class="btn btn--outline" type="button" data-editor-cerrar>Cancelar</button>
+        <button class="btn btn--primary" type="submit">Guardar</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <input type="file" accept="image/*" data-subir-archivo hidden>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/site-data.js"></script>
+  <script type="text/x-tambu" src="js/branches.js"></script>
+  <script type="text/x-tambu" src="js/cart.js"></script>
+  <script type="text/x-tambu" src="js/navigation.js"></script>
+  <script type="text/x-tambu" src="js/main.js"></script>
+  <script type="text/x-tambu" src="js/supabase-client.js"></script>
+  <script type="text/x-tambu" src="js/admin-shell.js"></script>
+  <script type="text/x-tambu" src="js/admin-config.js"></script>
+  <script type="text/x-tambu" src="js/admin-carta.js"></script>
+  <script type="text/x-tambu" src="js/admin-contenido.js"></script>
+</body>
+</html>

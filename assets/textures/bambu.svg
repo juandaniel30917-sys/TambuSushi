@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="320" viewBox="0 0 240 320">
+  <!-- Textura original de cañas de bambú, en tonos suaves. Se repite en mosaico. -->
+  <defs>
+    <linearGradient id="c" x1="0" x2="1">
+      <stop offset="0" stop-color="#CFAE6C"/>
+      <stop offset=".35" stop-color="#E9D29C"/>
+      <stop offset=".7" stop-color="#DDBE80"/>
+      <stop offset="1" stop-color="#B9944F"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="320" fill="#D7B877"/>
+  <g fill="url(#c)">
+    <rect x="0" width="40" height="320"/><rect x="40" width="40" height="320"/>
+    <rect x="80" width="40" height="320"/><rect x="120" width="40" height="320"/>
+    <rect x="160" width="40" height="320"/><rect x="200" width="40" height="320"/>
+  </g>
+  <g stroke="#9C7A3C" stroke-opacity=".55" stroke-width="2" fill="none">
+    <path d="M2 70h36M42 150h36M82 40h36M122 210h36M162 100h36M202 260h36"/>
+    <path d="M2 250h36M42 300h36M82 190h36M122 60h36M162 270h36M202 120h36"/>
+  </g>
+  <g stroke="#FFF6DD" stroke-opacity=".5" stroke-width="1" fill="none">
+    <path d="M2 73h36M42 153h36M82 43h36M122 213h36M162 103h36M202 263h36"/>
+    <path d="M2 253h36M42 303h36M82 193h36M122 63h36M162 273h36M202 123h36"/>
+  </g>
+  <g stroke="#8E6B30" stroke-opacity=".35" stroke-width="1">
+    <path d="M40 0v320M80 0v320M120 0v320M160 0v320M200 0v320"/>
+  </g>
+</svg>

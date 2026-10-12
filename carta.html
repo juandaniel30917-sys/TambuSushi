@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carta · Tambú Sushi Talca</title>
+  <meta name="description" content="Carta digital de Tambú Sushi: rolls calientes y fríos, hand rolls, opciones sin arroz, bebidas y promociones.">
+  <meta name="theme-color" content="#F8F6F0">
+  <script src="js/theme.js"></script>
+  <link rel="icon" type="image/png" href="assets/images/logo-circular-mini.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/motion.css">
+</head>
+<body data-page="carta">
+  <div id="site-header"></div>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Tambú Sushi · <span data-ciudad-marca>Talca</span></span>
+        <h1 data-texto="carta.titulo1">Carta</h1>
+        <p class="lead" data-texto="carta.texto1">Elige por categoría, busca tu roll favorito o ordena por precio.</p>
+      </div>
+    </section>
+
+    <div class="filter-bar">
+      <div class="container">
+        <div class="filter-bar__row">
+          <div class="search">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+            <label class="visually-hidden" for="buscar-carta">Buscar en la carta</label>
+            <input class="input" id="buscar-carta" type="search" placeholder="Buscar…" autocomplete="off">
+          </div>
+          <div>
+            <label class="visually-hidden" for="orden-carta">Ordenar</label>
+            <select class="select" id="orden-carta">
+              <option value="relevancia">Recomendados</option>
+              <option value="precio-asc">Precio: menor a mayor</option>
+              <option value="precio-desc">Precio: mayor a menor</option>
+              <option value="nombre">Nombre A–Z</option>
+            </select>
+          </div>
+        </div>
+        <div class="chip-row" data-carta-chips aria-label="Categorías"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="results-info" data-carta-info aria-live="polite">Cargando carta…</p>
+      <div data-carta>
+        <div class="product-grid" style="padding-top:24px"><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/site-data.js"></script>
+  <script type="text/x-tambu" src="js/branches.js"></script>
+  <script type="text/x-tambu" src="js/cart.js"></script>
+  <script type="text/x-tambu" src="js/navigation.js"></script>
+  <script type="text/x-tambu" src="js/main.js"></script>
+  <script type="text/x-tambu" src="js/supabase-client.js"></script>
+  <script type="text/x-tambu" src="js/my-orders.js"></script>
+  <script type="text/x-tambu" src="js/products.js"></script>
+  <script type="text/x-tambu" src="js/motion.js"></script>
+</body>
+</html>

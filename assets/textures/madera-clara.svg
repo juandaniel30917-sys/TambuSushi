@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <!-- Textura original de madera clara / bambú laminado. Muy sutil. -->
+  <rect width="400" height="200" fill="#EDE2CC"/>
+  <g fill="none" stroke="#D9C7A4" stroke-width="1.2" stroke-opacity=".8">
+    <path d="M0 18c80-6 150 6 220 0s130-8 180 2"/>
+    <path d="M0 46c90 4 160-8 240-2s110 6 160-2"/>
+    <path d="M0 80c70-4 140 8 210 2s130-6 190 0"/>
+    <path d="M0 112c100 6 170-6 250 0s100 4 150-4"/>
+    <path d="M0 148c80-8 150 4 220-2s120 6 180 0"/>
+    <path d="M0 182c90 4 160-6 230 0s120-2 170 4"/>
+  </g>
+  <g fill="none" stroke="#C9B48B" stroke-width=".6" stroke-opacity=".6">
+    <path d="M0 30c90-2 170 6 260 0s100-4 140 0"/>
+    <path d="M0 96c80 4 160-4 240 0s110 2 160-2"/>
+    <path d="M0 164c100-2 180 4 260-2s100 2 140 0"/>
+  </g>
+</svg>

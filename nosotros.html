@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nosotros · Tambú Sushi Talca</title>
+  <meta name="description" content="La historia y el oficio detrás de Tambú Sushi en Talca.">
+  <meta name="theme-color" content="#F8F6F0">
+  <script src="js/theme.js"></script>
+  <link rel="icon" type="image/png" href="assets/images/logo-circular-mini.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/motion.css">
+</head>
+<body data-page="nosotros">
+  <div id="site-header"></div>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Tambú Sushi · <span data-ciudad-marca>Talca</span></span>
+        <h1 data-texto="nosotros.titulo1">Nosotros</h1>
+        <p class="lead" data-texto="nosotros.texto1">Un local de sushi en Talca que prepara cada pedido al momento.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container editorial">
+        <div class="mosaic">
+          <div data-imagen="nosotros.foto1" class="photo photo--tall" data-label="Foto provisional · cocina" role="img" aria-label="Espacio para foto de la cocina"></div>
+          <div class="bamboo-panel" role="presentation"></div>
+          <div data-imagen="nosotros.foto2" class="photo photo--soft" data-label="Foto provisional · equipo" role="img" aria-label="Espacio para foto del equipo"></div>
+        </div>
+        <div>
+          <span class="eyebrow" data-texto="nosotros.etiqueta1">Nuestra historia</span>
+          <h2 data-texto="nosotros.titulo2">Hecho con calma, servido a tiempo</h2>
+          <div data-marca-historia></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper">
+      <div class="container editorial editorial--reverse">
+        <div data-imagen="nosotros.foto3" class="photo photo--wide" data-label="Foto provisional · preparación" role="img" aria-label="Espacio para foto de preparación"></div>
+        <div><span class="eyebrow" data-texto="nosotros.etiqueta2">Lo que nos mueve</span><p class="quote" data-marca-cita></p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head"><div><span class="eyebrow" data-texto="nosotros.etiqueta3">Valores</span><h2 data-texto="nosotros.titulo3">Cómo trabajamos</h2></div></div>
+        <div class="values" data-marca-valores></div>
+        <div class="row" style="margin-top:40px">
+          <a class="btn btn--primary" href="carta.html" data-texto="nosotros.boton1">Ver la carta</a>
+          <a class="btn btn--outline" href="contacto.html" data-texto="nosotros.boton2">Contacto</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/site-data.js"></script>
+  <script type="text/x-tambu" src="js/branches.js"></script>
+  <script type="text/x-tambu" src="js/cart.js"></script>
+  <script type="text/x-tambu" src="js/navigation.js"></script>
+  <script type="text/x-tambu" src="js/main.js"></script>
+  <script type="text/x-tambu" src="js/supabase-client.js"></script>
+  <script type="text/x-tambu" src="js/my-orders.js"></script>
+  <script type="text/x-tambu" src="js/content.js"></script>
+  <script type="text/x-tambu" src="js/motion.js"></script>
+</body>
+</html>

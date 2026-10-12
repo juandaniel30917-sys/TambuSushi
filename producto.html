@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Producto · Tambú Sushi Talca</title>
+  <meta name="description" content="Detalle de producto de Tambú Sushi Talca.">
+  <meta name="theme-color" content="#F8F6F0">
+  <script src="js/theme.js"></script>
+  <link rel="icon" type="image/png" href="assets/images/logo-circular-mini.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/motion.css">
+</head>
+<body data-page="producto">
+  <div id="site-header"></div>
+
+  <main id="contenido">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta" style="margin-top:24px" data-breadcrumb>
+        <a href="index.html">Inicio</a><span aria-hidden="true">/</span><a href="carta.html">Carta</a>
+      </nav>
+      <div data-producto>
+        <div class="detail"><div class="skeleton" style="aspect-ratio:1"></div><div class="skeleton" style="height:420px"></div></div>
+      </div>
+    </div>
+
+    <section class="section section--paper" data-relacionados-wrap hidden>
+      <div class="container">
+        <div class="section__head"><div><span class="eyebrow">También te puede gustar</span><h2>Productos relacionados</h2></div></div>
+        <div class="product-grid" data-relacionados></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/site-data.js"></script>
+  <script type="text/x-tambu" src="js/branches.js"></script>
+  <script type="text/x-tambu" src="js/cart.js"></script>
+  <script type="text/x-tambu" src="js/navigation.js"></script>
+  <script type="text/x-tambu" src="js/main.js"></script>
+  <script type="text/x-tambu" src="js/supabase-client.js"></script>
+  <script type="text/x-tambu" src="js/my-orders.js"></script>
+  <script type="text/x-tambu" src="js/products.js"></script>
+  <script type="text/x-tambu" src="js/product-detail.js"></script>
+  <script type="text/x-tambu" src="js/motion.js"></script>
+</body>
+</html>
